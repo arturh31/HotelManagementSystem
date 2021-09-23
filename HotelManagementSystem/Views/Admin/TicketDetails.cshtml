@@ -1,0 +1,43 @@
+﻿@model HotelManagementSystem.Models.SupportTicket
+
+@{
+    ViewData["Title"] = "TicketDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Ticket Details</h1>
+
+<h4>Support Ticket</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="TicketUpdate">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="TicketId" />
+            <div class="form-group">
+                <label asp-for="EmpId" class="control-label">Employee Id</label>
+                <input asp-for="EmpId" class="form-control" readonly/>
+                <span asp-validation-for="EmpId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Message" class="control-label">Message</label>
+                <textarea asp-for="Message" rows="10" class="form-control" readonly></textarea>             
+            </div>
+            <div class="form-group">
+                <label asp-for="StatusCode" class="control-label">Ticket status</label>
+                <select asp-for="StatusCode" class="form-control">
+                    <option value="1" class="text-danger">Active</option>
+                    <option value="2" class="text-success">Resolved</option>                   
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="ActiveSupportTickets">Back to List</a>
+</div>
+

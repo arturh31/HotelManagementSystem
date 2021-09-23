@@ -1,0 +1,109 @@
+﻿@using HotelManagementSystem.Models.ViewModels;
+@model List<RoomReservationViewModel>
+
+@{
+	ViewData["Title"] = "Home Page";
+}
+
+<div class="jumbotron">
+	<h1 class="text-center">Dashboard</h1>
+</div>
+
+
+<div class="col-xl-12 bottomPadding20 border-bottom border-dark">
+	<h3>Active reservations</h3>
+	<h5>Displays current reservations</h5>
+
+	<table class="table table-hover">
+		<thead class="thead-dark">
+			<tr>
+				<th>Room Number</th>
+				<th>Room Type</th>
+				<th>Room Floor</th>
+				<th>Room Status</th>
+				<th>Reservation start date</th>
+				<th>Reservation end date</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var room in Model)
+	{
+		if (room.StartDate < DateTime.Now && room.EndDate > DateTime.Now)
+		{
+			<tr>
+				<td>@room.RoomNumber</td>
+				<td>@room.RoomType</td>
+				<td>@room.RoomFloor</td>
+				<td>
+					@if (room.RoomStatusId == 1)
+				{<span class="text-success">Ready</span>}
+				else
+				{<span class="text-danger">Not Ready</span>}
+				</td>
+				<td>@room.StartDate</td>
+				<td>@room.EndDate</td>
+			</tr>
+		}
+	}
+		<tbody>
+	</table>
+</div>
+<div class="col-xl-12 topPadding20">
+	<h3 class="text-left">Last release notes</h3>
+	<div class="list-group">
+		<a href="#" class="list-group-item list-group-item-action">
+			<div class="d-flex w-100 justify-content-between">
+				<h5 class="mb-1">Release notes</h5>
+				<small>07/04/2020</small>
+			</div>
+			<p class="mb-1">We've added Employee Schedule Manager functionality</p>
+		</a>
+		<a href="#" class="list-group-item list-group-item-action">
+			<div class="d-flex w-100 justify-content-between">
+				<h5 class="mb-1">Release notes</h5>
+				<small>02/04/2020</small>
+			</div>
+			<p class="mb-1">Added date validation for reservations. Now you cannot add overlaping date range for the same room.</p>
+		</a>
+	</div>
+</div>
+<div class="row col-xl-12 topPadding80 bottomPadding20">
+	<div class="col-md-6 justify-content-center">
+		<h3>System is not working properly? Did you find a bug?</h3>
+		<p>Please sumbit a ticket. System admin will take care of your issues. Describe your problem as good as you can. It will make our work easier :)</p>
+		<div class="justify-content-center text-left"><button type="button" class="btn btn-dark btn-lg" data-toggle="modal" data-target="#emailModal"><i class="far fa-envelope"></i> Send</button></div>
+	</div>
+</div>
+
+<div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Support ticket</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			@using (Html.BeginForm(FormMethod.Post))
+				{
+			<div class="modal-body">
+				<p class="text-danger text-left font-weight-bold">Include contact name and email in the message!</p>
+				<div class="form-group">
+					<label class="control-label">Subject</label>
+					<input type="text" name="Subject" class="form-control text-left" />
+					<label class="control-label">Message</label>
+					<textarea class="form-control" name="Message" rows="10"></textarea>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+				<button asp-action="CreateTicket" type="submit" class="btn btn-primary">Send</button>
+			</div>
+				}
+		</div>
+	</div>
+</div>
+
+
+
+

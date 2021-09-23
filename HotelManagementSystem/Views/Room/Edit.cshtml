@@ -1,0 +1,56 @@
+﻿@model HotelManagementSystem.Models.Room
+
+@{ 
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Room</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edited">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="RoomId" />
+            <div class="form-group">
+                <label asp-for="RoomNumber" class="control-label"></label>
+                <input asp-for="RoomNumber" class="form-control" />
+                <span asp-validation-for="RoomNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaxGuests" class="control-label"></label>
+                <input asp-for="MaxGuests" class="form-control" />
+                <span asp-validation-for="MaxGuests" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RoomType" class="control-label"></label>
+                <input asp-for="RoomType" class="form-control" />
+                <span asp-validation-for="RoomType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RoomFloor" class="control-label"></label>
+                <input asp-for="RoomFloor" class="form-control" />
+                <span asp-validation-for="RoomFloor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FkRoomStatusId" class="control-label">Room Status</label>
+                <select asp-for="FkRoomStatusId" class="form-control">
+                    <option value="1">Ready</option>
+                    <option value="2">Not Ready</option>
+                    <option value="3">Pending...</option>
+                    
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

@@ -1,0 +1,98 @@
+﻿@using HotelManagementSystem.Models.ViewModels;
+@using X.PagedList.Mvc.Core
+@model X.PagedList.IPagedList<HotelManagementSystem.Models.ViewModels.RoomReservationViewModel>
+@using X.PagedList;
+@using X.PagedList.Mvc.Core.Common
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Reservations</h1>
+<br />
+<p>
+    <a asp-action="Create" class="btn btn-dark"><i class="fas fa-plus"></i> Add New Reservation</a>
+</p>
+<br />
+<table class="table table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                Room Number
+            </th>
+            <th>
+                Start Date
+            </th>
+            <th>
+                End Date
+            </th>
+            <th>
+                Food Option
+            </th>
+            <th>
+                Guest Name
+            </th>
+            <th>
+                Room Type
+            </th>
+            <th>
+                Employee Name
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.RoomNumber
+                </td>
+                <td>
+                    @item.StartDate
+                </td>
+                <td>
+                    @item.EndDate
+                </td>
+                <td>
+                    @if (item.FoodOptionId == 1)
+                    {
+                        <p>Dinner only</p>
+                    }
+                    @if (item.FoodOptionId == 2)
+                    {
+                        <p>Full</p>
+                    }
+                    @if (item.FoodOptionId == 3)
+                    {
+                        <p>Breakfast only</p>
+                    }
+                    @if (item.FoodOptionId == 4)
+                    {
+                        <p>No food</p>
+                    }
+                </td>
+                <td>
+                    @item.GuestName
+                </td>
+                <td>
+                    @item.RoomType
+                </td>
+                <td>
+                    @item.EmployeeName
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ReservationId"><i class="fas fa-edit"></i></a> |
+                    <a asp-action="Details" asp-route-id="@item.ReservationId"><i class="fas fa-search"></i></a> |
+                    <a asp-action="Delete" asp-route-id="@item.ReservationId"><i class="fas fa-trash"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions { FunctionToTransformEachPageLink = (liTag, aTag) => { aTag.Attributes.Add("class", "page-link".ToString()); return aTag; }, LiElementClasses = new[] { "page-item" }, UlElementClasses = new[] { "pagination  justify-content-center" } })
+</div>
+
+<!--<partial></partial>-->

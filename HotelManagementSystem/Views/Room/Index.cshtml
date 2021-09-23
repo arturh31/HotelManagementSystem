@@ -1,0 +1,87 @@
+﻿@using X.PagedList.Mvc.Core
+@model X.PagedList.IPagedList<HotelManagementSystem.Models.Room>
+@using X.PagedList;
+@using X.PagedList.Mvc.Core.Common
+
+
+
+<h1>All rooms</h1>
+<br />
+<div class="row">
+
+	<div class="col-sm-6">
+		<p>
+			<a asp-action="Create" class="btn btn-dark"><i class="fas fa-plus"></i> Create New</a>
+		</p>
+	</div>
+	<div class="col-sm-6">
+		<a asp-action="Search" class="btn btn-dark float-right"><i class="fas fa-search"></i> Room finder</a>
+	</div>
+</div>
+
+<table class="table table-hover">
+	<thead class="thead-dark">
+		<tr>
+			<th>
+				Room Number
+			</th>
+			<th>
+				Max Guests
+			</th>
+			<th>
+				Room Type
+			</th>
+			<th>
+				Room Floor
+			</th>
+			<th>
+				Room Status
+			</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.RoomNumber)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.MaxGuests)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.RoomType)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.RoomFloor)
+			</td>
+			<td>
+				@if (item.FkRoomStatusId == 1)
+				{
+					<p class="text-success">Ready</p>
+				}
+				@if (item.FkRoomStatusId == 2)
+				{
+					<p class="text-danger">Not Ready</p>
+				}
+				@if (item.FkRoomStatusId == 3)
+				{
+					<p class="text-warning">Pending...</p>
+				}
+			</td>
+			<td>
+				<a asp-action="Edit" asp-route-id="@item.RoomId"><i class="fas fa-edit"></i></a> |
+				<a asp-action="Details" asp-route-id="@item.RoomId"><i class="fas fa-search"></i></a> |
+				<a asp-action="Delete" asp-route-id="@item.RoomId"><i class="fas fa-trash"></i></a>
+			</td>
+		</tr>
+
+		}
+	</tbody>
+</table>
+<div></div>
+<div>
+	@Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions { FunctionToTransformEachPageLink = (liTag, aTag) => { aTag.Attributes.Add("class", "page-link".ToString()); return aTag; }, LiElementClasses = new[] { "page-item" }, UlElementClasses = new[] { "pagination  justify-content-center" } })
+</div>
+

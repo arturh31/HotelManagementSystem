@@ -1,0 +1,55 @@
+﻿@using X.PagedList.Mvc.Core
+@model X.PagedList.IPagedList<HotelManagementSystem.Models.SupportTicket>
+@using X.PagedList;
+@using X.PagedList.Mvc.Core.Common
+
+
+
+<h1>Active Support Tickets</h1>
+<br />
+
+<table class="table table-hover">
+	<thead class="thead-dark">
+		<tr>
+			<th>
+				Ticket Number
+			</th>
+			<th>
+				Message
+			</th>
+			<th>
+				Action
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.TicketId)
+			</td>
+			@if (item.Message.Length > 50)
+			{
+				<td>
+					@item.Message.Substring(0, 40)...
+				</td>
+			}
+			else
+			{
+				<td>
+					@Html.DisplayFor(modelItem => item.Message)
+				</td>
+			}
+			<td>
+				<a class="btn btn-dark" asp-controller="Admin"  asp-action="TicketDetails" asp-route-id="@item.TicketId">Ticket details</a>
+			</tr>
+
+		}
+	</tbody>
+</table>
+<div></div>
+<div>
+	@Html.PagedListPager(Model, page => Url.Action("ActiveSupportTickets", new { page }), new PagedListRenderOptions { FunctionToTransformEachPageLink = (liTag, aTag) => { aTag.Attributes.Add("class", "page-link".ToString()); return aTag; }, LiElementClasses = new[] { "page-item" }, UlElementClasses = new[] { "pagination  justify-content-center" } })
+</div>
+

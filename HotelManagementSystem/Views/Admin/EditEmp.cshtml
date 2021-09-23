@@ -1,0 +1,73 @@
+﻿@model HotelManagementSystem.Models.Employee
+
+@{
+    ViewData["Title"] = "Edit Employee";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit Employee</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditEmp">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="EmpId" />
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label">First Name</label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label">Last Name</label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label">Email</label>
+                <span class="text-danger">Email cannot be changed</span>
+                <input asp-for="Email" class="form-control" disabled/>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label">Phone Number</label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmpFromDate" class="control-label">Employee from date</label>
+                <input asp-for="EmpFromDate" class="form-control" />
+                <span asp-validation-for="EmpFromDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmpToDate" class="control-label">Employee to date</label>
+                <input asp-for="EmpToDate" class="form-control" />
+                <span asp-validation-for="EmpToDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MobileAppId" class="control-label">Mobile App ID</label>
+                <input asp-for="MobileAppId" class="form-control" disabled/>
+                <span asp-validation-for="MobileAppId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Position" class="control-label">Position</label>
+                <select asp-for="Position" class="form-control">
+                    <option value="Chairman">Chairman</option>
+                    <option value="Receptionist">Receptionist</option>
+                    <option value="Manager">Manager</option>
+                    <option value="Cleaning Service">Cleaning Service</option>
+                </select>
+
+                
+            </div>           
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-dark" asp-action="FindEmployee">Back to finder</a>
+</div>
+

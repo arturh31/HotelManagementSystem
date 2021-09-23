@@ -1,0 +1,22 @@
+﻿@{
+	ViewData["Title"] = "FindEmployeeScheduleByEmail";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center topPadding20 bottomPadding20">Find Employee Schedule By Email</h1>
+
+<p class="text-center">Type email</p>
+
+
+<div class="row flex justify-content-center align-items-center">
+	<div class="col-md-4">
+		@using (Html.BeginForm("FindEmployeeScheduleByEmail", "Schedule", FormMethod.Post))
+		{
+			<input type="text" name="EmpEmail" class="form-control" />
+			<div class="topPadding20 text-center">
+				<button type="submit" class="btn btn-dark">Find <i class="fas fa-search"></i></button>
+			</div>
+		}
+	</div>
+</div>
+

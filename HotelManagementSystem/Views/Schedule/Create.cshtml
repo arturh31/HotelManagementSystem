@@ -1,0 +1,45 @@
+﻿@model HotelManagementSystem.Models.ViewModels.EmployeeScheduleViewModel
+
+@{
+	ViewData["Title"] = "Create";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create Schedule</h1>
+
+<hr />
+<div class="row">
+	<div class="col-md-4">
+		<form asp-action="Created">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<input type="hidden" asp-for="ShiftId" />			
+			<div class="form-group">
+				<label asp-for="Email" class="control-label">Email</label>
+				<input asp-for="Email" class="form-control" />
+				<span asp-validation-for="Email" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="ShiftType" class="control-label">Shift Type (1 - morning shift, 2 - afternoon shift, 3 - night shift)</label>
+				<input asp-for="ShiftType" class="form-control" />
+				<span asp-validation-for="ShiftType" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="FromDate" class="control-label">Start time</label>
+				<input asp-for="FromDate" type="date" class="form-control" />
+				<span asp-validation-for="FromDate" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="ToDate" class="control-label">End time</label>
+				<input asp-for="ToDate" type="date" class="form-control" />
+				<span asp-validation-for="ToDate" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<input type="submit" value="Save" class="btn btn-primary" />
+			</div>
+		</form>
+	</div>
+</div>
+
+<div>
+	<a asp-action="FindEmployee">Back to finder</a>
+</div>

@@ -1,0 +1,56 @@
+﻿@model List<HotelManagementSystem.Models.ViewModels.EmployeeScheduleViewModel>
+@{
+    ViewData["Title"] = "Schedules";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center topPadding20 bottomPadding20">Schedules for employee @Model.FirstOrDefault().EmpName</h1>
+
+<p>
+	<a asp-action="Create" class="btn btn-dark"><i class="fas fa-plus"></i> Add new schedule</a>
+</p>
+
+<div class="row">
+	<table class="table table-sm">
+		<thead>
+			<tr>
+				<th scope="col">Shift type</th>				
+				<th scope="col">From</th>
+				<th scope="col">To</th>
+				<th scope="col">Action</th>
+				<th scope="col">Should work today?</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in Model)
+			{
+				if (item.ShiftId != 999999)
+				{
+					<tr>
+					<td>@item.ShiftType</td>
+					<td>@item.FromDate.ToShortDateString()</td>
+					<td>@item.ToDate.ToShortDateString()</td>
+					<td>
+						<a asp-action="Edit" asp-route-id="@item.ShiftId"><i class="fas fa-edit"></i></a> |
+						<a asp-action="Delete" asp-route-id="@item.ShiftId"><i class="fas fa-trash"></i></a>
+					</td>
+				@if (item.FromDate <= DateTime.Now && DateTime.Now <= item.ToDate) //|| item.ToDate == null))
+				{
+					<td class="bg-success"></td>
+				}
+				else
+				{
+					<td class="bg-danger"></td>
+				}
+				
+
+					</tr>
+				}
+				else
+				{
+					<h6 class="text-danger">This employee has no schedule yet</h6>
+				}
+
+			}
+</div>
+

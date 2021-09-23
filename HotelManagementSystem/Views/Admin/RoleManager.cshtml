@@ -1,0 +1,33 @@
+﻿@using HotelManagementSystem.Models
+@model List<Employee>
+
+<h6 class="topPadding20">Assign role to employee</h6>
+
+<div class="row flex">
+    <div class="col-xl-6 topPadding20">
+        @using (Html.BeginForm("RoleManager", "Admin", FormMethod.Post))
+        {        
+        <div class="form-group">
+            <label class="control-label">Select employee and role</label>
+            <select class="form-control" name="Employee">
+                @foreach (var item in Model)
+                {
+                    <option value="@item.Email">@item.FirstName @item.LastName</option>
+                }
+            </select>
+            <br />
+            <select class="form-control" name="Role">
+                <option value="Admin">Admin</option>
+                <option value="Manager">Manager</option>
+                <option value="CleaningService">Cleaning Service</option>
+                <option value="Receptionist">Receptionist</option>
+            </select>
+        </div>
+            <div class="topPadding20 text-center">
+                <button type="submit" class="btn btn-dark">Assign role <i class="fas fa-plus"></i></button>
+            </div>
+        }
+    </div>
+</div>
+
+

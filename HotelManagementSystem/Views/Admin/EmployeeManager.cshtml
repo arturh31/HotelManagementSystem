@@ -1,0 +1,16 @@
+﻿@using HotelManagementSystem.Models
+@model List<Employee>
+
+@{
+    ViewData["Title"] = "Employee Role";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Assign Application Role to Employee</h1>
+
+<div class="col-xl-6">
+   @Html.Partial("RoleManager", Model)
+</div>
+
+
+

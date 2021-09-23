@@ -1,0 +1,86 @@
+﻿@model HotelManagementSystem.Models.ViewModels.RoomReservationViewModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Reservation</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Reservation number
+        </dt>
+        <dd class="col-sm-10">
+            @Model.ReservationId
+        </dd>
+        <dt class="col-sm-2">
+            Room number
+        </dt>
+        <dd class="col-sm-10">
+            @Model.RoomNumber
+        </dd>
+        <dt class="col-sm-2">
+            Start Date
+        </dt>
+        <dd class="col-sm-10">
+            @Model.StartDate
+        </dd>
+        <dt class="col-sm-2">
+            EndDate
+        </dt>
+        <dd class="col-sm-10">
+            @Model.EndDate
+        </dd>
+        <dt class="col-sm-2">
+            Room Type
+        </dt>
+        <dd class="col-sm-10">
+            @Model.RoomType
+        </dd>
+        <dt class="col-sm-2">
+            Room Floor
+        </dt>
+        <dd class="col-sm-10">
+            @Model.RoomFloor
+        </dd>
+        <dt class="col-sm-2">
+            Guest Name
+        </dt>
+        <dd class="col-sm-10">
+            @Model.GuestName
+        </dd>
+        <dt class="col-sm-2">
+            Guest Phone Number
+        </dt>
+        <dd class="col-sm-10">
+            @Model.GuestPhoneNumber
+        </dd>
+        <dt class="col-sm-2">
+            Employee name
+        </dt>
+        <dd class="col-sm-10">
+            @Model.EmployeeName
+        </dd>
+        <dt class="col-sm-2">
+            Food Option
+        </dt>
+        <dd class="col-sm-10">
+           @Model.FoodOptionId
+        </dd>
+
+    </dl>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.ReservationId">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
+    </br>
+    <div class="col-md-12">
+        @Html.Partial("Dates")
+    </div>
+</div>
+    
+

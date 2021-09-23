@@ -1,0 +1,55 @@
+﻿@model IEnumerable<HotelManagementSystem.Models.Guest>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>All guests</h1>
+<br />
+<p>
+    <a asp-action="Create" class="btn btn-dark"><i class="fas fa-plus"></i> Add new guest</a>
+</p>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                First Name
+            </th>
+            <th>
+                Last Name
+            </th>
+            <th>
+                Phone Number
+            </th>
+            <th>
+                Email Address
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailAddress)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.GuestId"><i class="fas fa-edit"></i></a> |
+                <a asp-action="Details" asp-route-id="@item.GuestId"><i class="fas fa-search"></i></a> |
+                <a asp-action="Delete" asp-route-id="@item.GuestId"><i class="fas fa-trash"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

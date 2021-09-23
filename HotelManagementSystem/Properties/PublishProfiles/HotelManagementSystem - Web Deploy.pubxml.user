@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAABZTOwi6wGkiWIs1V/wb2SgAAAAACAAAAAAAQZgAAAAEAACAAAACdhFgXHv8NsbOiG6vghdjpO2ZTvqZZsn3HZw/Ik4UAkQAAAAAOgAAAAAIAACAAAAAO/v6rZYaV4JRFfwyNdb1eVx+gNYGAcC3xC+BGtvBOBIAAAABW2tiN94TpIhV2ewZJqOv9NYiPy51IilkMnyHAPL7baB+x2d8FYMY5W/IwMQjckjSDxFF3iSyZxVA0zDpJH4eIPnOeKKEroy4b7JDnO4bv6awaqh7HKuDFijMUJxr2gc5b/l33TqdBqoK1E9JHkFjqXXlvMewBWsJSRsRWeZBY+UAAAABppmG8VL9X752/JADWLKsEMbiK+oGHf3V7cN//Ceyq4fYe4GaDCohs1sskc7Wwrf/P0A+SsZMlFHJx9nhYOAtm</EncryptedPassword>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Data Source=34.90.112.92%3bUser ID=ahatle%3bPassword=Qeadzcwxs123%3bDatabase=HMSDB%3bConnect Timeout=30%3bEncrypt=False%3bTrustServerCertificate=False%3bApplicationIntent=ReadWrite%3bMultiSubnetFailover=False</Value>
+    </DestinationConnectionStrings>
+    <DestinationConnectionStrings Include="IdentityConnection">
+      <Value>Data Source=34.90.112.92%3bUser ID=ahatle%3bPassword=Qeadzcwxs123%3bDatabase=IdentityDB%3bConnect Timeout=30%3bEncrypt=False%3bTrustServerCertificate=False%3bApplicationIntent=ReadWrite%3bMultiSubnetFailover=False</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>

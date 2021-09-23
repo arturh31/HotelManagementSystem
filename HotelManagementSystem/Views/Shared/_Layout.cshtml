@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"] Hotel Management System</title>
+	<link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" integrity="" asp-append-version="true" />
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous" asp-append-version="true">
+	<environment include="Development">
+		<link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" integrity="" />
+	</environment>
+	<environment exclude="Development">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+			  asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+			  asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
+			  crossorigin="anonymous"
+			  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" />
+	</environment>
+	<link rel="stylesheet" href="~/css/site.css" integrity="" />
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+</head>
+<body>
+	<header>
+		<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3 bg-dark">
+			<div class="container">
+				<a class="navbar-brand text-light" asp-area="" asp-controller="Home" asp-action="Index"><i class="fas fa-hotel"></i> Hotel Management</a>
+				<button class="navbar-toggler text-light" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+						aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+					@Html.Partial("_LoginPartial")
+					<ul class="navbar-nav flex-grow-1">
+						<li class="nav-item">
+							<a class="nav-link text-light" asp-area="" asp-controller="Room" asp-action="Index">Rooms</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-light" asp-area="" asp-controller="Reservation" asp-action="Index">Reservations</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-light" asp-area="" asp-controller="Guest" asp-action="Index">Guests</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-light" asp-area="" asp-controller="Schedule" asp-action="EmployeeSchedule">Schedule</a>
+						</li>
+						
+						<li class="nav-item dropdown ">
+							<a class="nav-link btn dropdown-toggle text-light" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								Admin panel
+							</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+								<a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">Register new employee</a>
+								<a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="EmployeeManager">Assign Role</a>
+								<a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="FindEmployee">Edit Employee</a>
+								<a class="nav-link dropdown-toggle text-dark" href="#" id="2nddrop" aria-haspopup="true" data-toggle="dropdown" aria-expanded="false">Support tickets</a>
+								<div class="dropdown-menu dropright" aria-labelledby="2nddrop">
+									<a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="ActiveSupportTickets">Active Tickets</a>
+									<a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="ResolvedSupportTickets">Resolved Tickets</a>
+								</div>
+							</div>
+						</li>
+						<li class="nav-item">
+							<a href="https://drive.google.com/file/d/16wv4MgORSs8WgWEkU-ei8Vob_STW3qPx/view?usp=sharing" class="nav-link text-light" >Download mobile app</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<div class="container">
+		
+		<main role="main" class="pb-3">
+			@RenderBody()
+		</main>
+	</div>
+
+	<footer class="border-top footer text-muted">
+		<div class="container">
+			&copy; Hotel Management System
+		</div>
+	</footer>
+	<script src="~/lib/jquery/dist/jquery.js" integrity="" asp-append-version="true"></script>
+	<script src="~/lib/bootstrap/js/bootstrap.bundle.min.js" integrity="" asp-append-version="true"></script>		
+	<script src="~/js/site.js" asp-append-version="true" integrity="" asp-append-version="true"></script>
+
+
+	@RenderSection("Scripts", required: false)
+</body>
+</html>

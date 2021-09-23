@@ -1,0 +1,25 @@
+﻿@model Room
+    @{
+        ViewData["Title"] = "FindRoom";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h1 class="text-center topPadding80">Find Room</h1>
+    
+    <p class="text-center">Type a room number of a room that you are looking for</p>
+
+        
+
+    <div class="row flex justify-content-center align-items-center">
+        <div class="col-md-4">
+            @using (Html.BeginForm("SearchById", "Room", FormMethod.Post))
+			{
+                <input type="number" name="RoomNumber" class="form-control" min="101" max="260"/>
+                <div class="topPadding20 text-center">
+                    <button type="submit" class="btn btn-dark">Find <i class="fas fa-search"></i></button>
+                </div>
+		    }
+        </div>
+    </div>
+
+
